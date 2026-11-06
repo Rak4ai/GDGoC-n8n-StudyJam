@@ -1,0 +1,101 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "645745cf-4902-4f89-bcb2-29ed55bf67d1",
+              "name": "Status",
+              "value": "succes",
+              "type": "string"
+            },
+            {
+              "id": "7bc5c7f8-9100-4583-a1ef-2fa6e6136cc8",
+              "name": "message",
+              "value": "=Thanks {{ $json.body.nama }} pesan kamu {{ $json.body.pesan }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        192,
+        0
+      ],
+      "id": "deaf026b-4899-470f-929f-64f76eed193f",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        448,
+        0
+      ],
+      "id": "52c12677-ca0f-4ffc-a129-55c04e7ab3b2",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "P1-test",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9a093261-a7dd-4178-8343-acc50bfab64e",
+      "name": "Webhook",
+      "webhookId": "60e0987c-cfb7-4818-9ea4-02e948a21251"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "f525da8e-580d-444d-a2f3-e99340263194",
+  "meta": {
+    "instanceId": "df45555251d0f3afe1887c72a3a4f1eec379426761261432b6e87774a0bd606d"
+  },
+  "nodeGroups": [],
+  "id": "VvA8a55DCe4xfQTp",
+  "tags": []
+}
